@@ -1,0 +1,9 @@
+## Interface: 70100
+## Author: lightspark
+## Version: 0.01-dev
+## Title: ls: |cff1a9fc0Prospector|r
+## Notes: JC helper.
+## SavedVariables: LS_PROSPECTOR_CFG_GLOBAL
+## SavedVariablesPerCharacter: LS_PROSPECTOR_CFG
+
+ls_Prospector.lua
