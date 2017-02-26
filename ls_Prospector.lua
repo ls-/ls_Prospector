@@ -13,8 +13,9 @@ local unpack = _G.unpack
 -- Mine
 local PROSPECTING_ID = 31252
 local PROSPECTING_NAME, _, PROSPECTING_ICON = _G.GetSpellInfo(PROSPECTING_ID)
+local PROSPECTING_MACRO_TEMPLATE = "/cast %s\n/use item:%s"
+local CLICK_MACRO_TEMPLATE = "/click %s"
 local ORE_COUNT_TEMLATE = "%s|T%s:0|t"
-local MACRO_TEMPLATE = "/cast %s\n/use item:%s"
 
 local CHIPS = {
 	legion = {
@@ -326,7 +327,7 @@ do
 				self.curOre = ore
 
 				self.OreIcon:SetTexture(ORES.legion[ore].texture)
-				self.ProspectButton:SetAttribute("macrotext", MACRO_TEMPLATE:format(PROSPECTING_NAME, ORES.legion[ore].id))
+				self.ProspectButton:SetAttribute("macrotext", PROSPECTING_MACRO_TEMPLATE:format(PROSPECTING_NAME, ORES.legion[ore].id))
 			else
 				self.prevOre = (self.curOre and (self.curOre == "leystone" or self.curOre == "felslate")) and self.curOre or nil
 				self.curOre = ""
@@ -352,7 +353,7 @@ do
 		if not _G.InCombatLockdown() then
 			_G.DeleteMacro("LSPMacro")
 
-			local id = _G.CreateMacro("LSPMacro", PROSPECTING_ICON, "/click "..frame.ProspectButton:GetName())
+			local id = _G.CreateMacro("LSPMacro", PROSPECTING_ICON, CLICK_MACRO_TEMPLATE:format(frame.ProspectButton:GetName()))
 
 			if id then
 				_G.PickupMacro(id)
