@@ -17,29 +17,33 @@ local ORE_COUNT_TEMLATE = "%s|T%s:0|t"
 local MACRO_TEMPLATE = "/cast %s\n/use item:%s"
 
 local CHIPS = {
-	[1379182] = "blue",
-	[1379183] = "green",
-	[1379184] = "orange",
-	[1379185] = "purple",
-	[1379186] = "red",
-	[1379188] = "yellow",
-	blue = 1379182,
-	green = 1379183,
-	orange = 1379184,
-	purple = 1379185,
-	red = 1379186,
-	yellow = 1379188,
+	legion = {
+		[1379182] = "blue",
+		[1379183] = "green",
+		[1379184] = "orange",
+		[1379185] = "purple",
+		[1379186] = "red",
+		[1379188] = "yellow",
+		blue = 1379182,
+		green = 1379183,
+		orange = 1379184,
+		purple = 1379185,
+		red = 1379186,
+		yellow = 1379188,
+	}
 }
 
 local ORES = {
-	leystone = {
-		id = 123918,
-		texture = 1394960
-	},
-	felslate = {
-		id = 123919,
-		texture = 1394961
-	},
+	legion = {
+		leystone = {
+			id = 123918,
+			texture = 1394960
+		},
+		felslate = {
+			id = 123919,
+			texture = 1394961
+		},
+	}
 }
 
 ------------
@@ -206,20 +210,20 @@ do
 
 	-- Ore Counters
 	local fs = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-	fs:SetFormattedText(ORE_COUNT_TEMLATE, 0, ORES.felslate.texture)
+	fs:SetFormattedText(ORE_COUNT_TEMLATE, 0, ORES.legion.felslate.texture)
 	fs:SetJustifyH("RIGHT")
 	fs:SetPoint("BOTTOMRIGHT", inset, "TOPRIGHT", -4, 4)
 	frame.FelslateCounter = fs
 
 	fs = frame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-	fs:SetFormattedText(ORE_COUNT_TEMLATE, 0, ORES.leystone.texture)
+	fs:SetFormattedText(ORE_COUNT_TEMLATE, 0, ORES.legion.leystone.texture)
 	fs:SetJustifyH("RIGHT")
 	fs:SetPoint("BOTTOMRIGHT", frame.FelslateCounter, "TOPRIGHT", 0, 4)
 	frame.LeystoneCounter = fs
 
 	function frame:RefreshOreCounters()
-		self.LeystoneCounter:SetFormattedText(ORE_COUNT_TEMLATE, _G.GetItemCount(ORES.leystone.id) or 0, ORES.leystone.texture)
-		self.FelslateCounter:SetFormattedText(ORE_COUNT_TEMLATE, _G.GetItemCount(ORES.felslate.id) or 0, ORES.felslate.texture)
+		self.LeystoneCounter:SetFormattedText(ORE_COUNT_TEMLATE, _G.GetItemCount(ORES.legion.leystone.id) or 0, ORES.legion.leystone.texture)
+		self.FelslateCounter:SetFormattedText(ORE_COUNT_TEMLATE, _G.GetItemCount(ORES.legion.felslate.id) or 0, ORES.legion.felslate.texture)
 	end
 
 	-- Ore, Chip icons
@@ -321,8 +325,8 @@ do
 				self.prevOre = (self.curOre and self.curOre ~= "") and self.curOre or nil
 				self.curOre = ore
 
-				self.OreIcon:SetTexture(ORES[ore].texture)
-				self.ProspectButton:SetAttribute("macrotext", MACRO_TEMPLATE:format(PROSPECTING_NAME, ORES[ore].id))
+				self.OreIcon:SetTexture(ORES.legion[ore].texture)
+				self.ProspectButton:SetAttribute("macrotext", MACRO_TEMPLATE:format(PROSPECTING_NAME, ORES.legion[ore].id))
 			else
 				self.prevOre = (self.curOre and (self.curOre == "leystone" or self.curOre == "felslate")) and self.curOre or nil
 				self.curOre = ""
@@ -392,8 +396,8 @@ function dispatcher:LOOT_READY()
 		local chip
 
 		for _, item in pairs(lootInfo) do
-			if CHIPS[item.texture] then
-				chip = CHIPS[item.texture]
+			if CHIPS.legion[item.texture] then
+				chip = CHIPS.legion[item.texture]
 			else
 				chip = nil
 
@@ -401,7 +405,7 @@ function dispatcher:LOOT_READY()
 			end
 		end
 
-		frame.ChipIcon:SetTexture(chip and CHIPS[chip] or "Interface\\ICONS\\INV_Misc_QuestionMark")
+		frame.ChipIcon:SetTexture(chip and CHIPS.legion[chip] or "Interface\\ICONS\\INV_Misc_QuestionMark")
 
 		if not _G.InCombatLockdown() and frame:IsShown() then
 			if chip then
