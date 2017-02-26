@@ -301,7 +301,7 @@ do
 		if not _G.InCombatLockdown() then
 			_G.DeleteMacro("LSPMacro")
 
-			local id = _G.CreateMacro("LSPMacro", PROSPECTING_ICON, "/click LSProspectorFrameProspectButton")
+			local id = _G.CreateMacro("LSPMacro", PROSPECTING_ICON, "/click "..frame.ProspectButton:GetName())
 
 			if id then
 				_G.PickupMacro(id)
