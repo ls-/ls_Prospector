@@ -25,7 +25,7 @@ Gem weaving helper. Inspired by [GCH](https://mods.curse.com/addons/wow/gem-chip
 If you found a bug or want to share an idea on how to improve my addon, either report to [Issue Tracker](https://github.com/ls-/ls_Prospector/issues) on my GitHub page, or post a comment on [WoWInterfrace](https://www.wowinterface.com/downloads/info24353.html#comments) or [Curse](https://mods.curse.com/addons/wow/261694-ls-prospector#comments).
 
 ## Localisation
-Feel free to add and/or review translations on [CurseForge](https://), alternatively you can create a PR on [project's GitHub page](https://github.com/ls-/ls_Prospector/pulls).
+Feel free to add and/or review translations on [CurseForge](https://wow.curseforge.com/projects/ls-prospector/localization), alternatively you can create a PR on [project's GitHub page](https://github.com/ls-/ls_Prospector/pulls).
 
 ## License
 Please see [LICENSE](https://github.com/ls-/ls_Prospector/blob/master/LICENSE.txt) file.
