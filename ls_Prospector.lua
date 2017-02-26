@@ -321,7 +321,7 @@ do
 	icon = button:CreateTexture(nil, "ARTWORK", nil, 1)
 	icon:SetSize(36, 36)
 	icon:SetAllPoints()
-	icon:SetTexture("Interface\\ICONS\\INV_Misc_EngGizmos_20")
+	icon:SetAtlas("NPE_Icon")
 
 	border = button:CreateTexture(nil, "ARTWORK", nil, 2)
 	border:SetTexture("Interface\\Common\\WhiteIconFrame")
