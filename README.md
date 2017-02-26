@@ -9,7 +9,7 @@ Gem weaving helper. Inspired by [GCH](https://mods.curse.com/addons/wow/gem-chip
 
 ## Features
 - Swaps leystone ore for felsate if a gem chip of selected colour drops;
-- To avoid any felslate loss, the addon **WILL NOT** allow you to use its prospecting macro again until it decides which type of ore to use, and loot window is closed;
+- To avoid any felslate loss, the addon **WILL NOT** allow you to use its prospecting macro again until it decides which ore to use, and loot window is closed;
 - Shows info on future gem colour and amount of ore in your bags.
 
 ## Usage
