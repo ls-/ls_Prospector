@@ -61,9 +61,51 @@ local DEFAULTS = {
 	}
 }
 
-----------------
--- MAIN FRAME --
-----------------
+-----------
+-- UTILS --
+-----------
+
+local function CopyTable(src, dest)
+	if type(dest) ~= "table" then
+		dest = {}
+	end
+
+	for k, v in pairs(src) do
+		if type(v) == "table" then
+			dest[k] = CopyTable(v, dest[k])
+		elseif type(v) ~= type(dest[k]) then
+			dest[k] = v
+		end
+	end
+
+	return dest
+end
+
+local function ReplaceTable(src, dest)
+	return CopyTable(src, table.wipe(dest))
+end
+
+local function DiffTable(src, dest)
+	if type(dest) ~= "table" then
+		return {}
+	end
+
+	if type(src) ~= "table" then
+		return CopyTable(dest)
+	end
+
+	for k, v in pairs(dest) do
+		if type(v) == "table" then
+			if not next(DiffTable(src[k], v)) then
+				dest[k] = nil
+			end
+		elseif v == src[k] then
+			dest[k] = nil
+		end
+	end
+
+	return CopyTable(dest)
+end
 
 local function CalculatePosition(self)
 	local selfCenterX, selfCenterY = self:GetCenter()
@@ -94,6 +136,10 @@ local function CalculatePosition(self)
 
 	return p, p, math.floor(x + 0.5), math.floor(y + 0.5)
 end
+
+----------------
+-- MAIN FRAME --
+----------------
 
 local frame = _G.CreateFrame("Frame", "LSProspectorFrame", _G.UIParent, "PortraitFrameTemplate")
 frame:SetSize(192, 313)
@@ -446,48 +492,6 @@ end
 ------------
 -- CONFIG --
 ------------
-
-local function CopyTable(src, dest)
-	if type(dest) ~= "table" then
-		dest = {}
-	end
-
-	for k, v in pairs(src) do
-		if type(v) == "table" then
-			dest[k] = CopyTable(v, dest[k])
-		elseif type(v) ~= type(dest[k]) then
-			dest[k] = v
-		end
-	end
-
-	return dest
-end
-
-local function ReplaceTable(src, dest)
-	return CopyTable(src, table.wipe(dest))
-end
-
-local function DiffTable(src, dest)
-	if type(dest) ~= "table" then
-		return {}
-	end
-
-	if type(src) ~= "table" then
-		return CopyTable(dest)
-	end
-
-	for k, v in pairs(dest) do
-		if type(v) == "table" then
-			if not next(DiffTable(src[k], v)) then
-				dest[k] = nil
-			end
-		elseif v == src[k] then
-			dest[k] = nil
-		end
-	end
-
-	return CopyTable(dest)
-end
 
 function dispatcher:ADDON_LOADED(arg)
 	if arg ~= addonName then return end
