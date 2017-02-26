@@ -516,6 +516,7 @@ function dispatcher:PLAYER_LOGIN()
 	frame:Refresh()
 
 	_G.SLASH_LSPROSPECT1 = "/lsprospect"
+	_G.SLASH_LSPROSPECT2 = "/lsp"
 	_G.SlashCmdList["LSPROSPECT"] = function()
 		if not _G.InCombatLockdown() then
 			if frame:IsShown() then
