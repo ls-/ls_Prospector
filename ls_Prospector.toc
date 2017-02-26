@@ -6,4 +6,5 @@
 ## SavedVariables: LS_PROSPECTOR_CFG_GLOBAL
 ## SavedVariablesPerCharacter: LS_PROSPECTOR_CFG
 
+locales\_locales.xml
 ls_Prospector.lua

@@ -1,4 +1,5 @@
-local addonName = ...
+local addonName, addonTable = ...
+local L = addonTable.L
 
 -- Lua
 local _G = getfenv(0)
@@ -142,7 +143,7 @@ do
 	frame.portrait:SetTexture(PROSPECTING_ICON)
 
 	frame.TitleText:SetPoint("RIGHT", -30, 0)
-	frame.TitleText:SetText("ls: |cff1a9fc0Prospector|r")
+	frame.TitleText:SetText(L["LS_PROSPECTOR"])
 
 	frame.CloseButton:SetScript("OnClick", function()
 		if not _G.InCombatLockdown() then
@@ -199,27 +200,27 @@ do
 	-- Gem Filter
 	local buttons = {
 		[1] = {
-			text = "Blue",
+			text = L["COLOR_BLUE"],
 			gem = "blue"
 		},
 		[2] = {
-			text = "Green",
+			text = L["COLOR_GREEN"],
 			gem = "green"
 		},
 		[3] = {
-			text = "Orange",
+			text = L["COLOR_ORANGE"],
 			gem = "orange"
 		},
 		[4] = {
-			text = "Purple",
+			text = L["COLOR_PURPLE"],
 			gem = "purple"
 		},
 		[5] = {
-			text = "Red",
+			text = L["COLOR_RED"],
 			gem = "red"
 		},
 		[6] = {
-			text = "Yellow",
+			text = L["COLOR_YELLOW"],
 			gem = "yellow"
 		},
 	}
@@ -310,7 +311,7 @@ do
 	end)
 	button:SetScript("OnEnter", function(self)
 		_G.GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-		_G.GameTooltip:AddLine(_G.CREATE_MACROS)
+		_G.GameTooltip:AddLine(L["CREATE_MACRO"])
 		_G.GameTooltip:Show()
 	end)
 	button:SetScript("OnLeave", function()
