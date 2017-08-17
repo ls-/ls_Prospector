@@ -1,6 +1,6 @@
 ## Interface: 70200
 ## Author: lightspark
-## Version: 70200.01
+## Version: 70200.02
 ## Title: ls: |cff1a9fc0Prospector|r
 ## Notes: Gem weaving helper.
 ## SavedVariables: LS_PROSPECTOR_CFG_GLOBAL
