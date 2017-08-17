@@ -32,7 +32,7 @@ If you found a bug or want to share an idea on how to improve my addon, either r
 
 ## Localisation
 
-Feel free to add and/or review translations on [CurseForge](https://wow.curseforge.com/projects/ls-prospector/localization), alternatively you can create a PR on [project's GitHub page](https://github.com/ls-/ls_Prospector/pulls).
+Feel free to add and/or review translations on [CurseForge](https://wow.curseforge.com/projects/ls-prospector/localization), alternatively, you may create a PR on [project's GitHub page](https://github.com/ls-/ls_Prospector/pulls).
 
 ## License
 
